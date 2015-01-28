@@ -1,0 +1,8 @@
+{
+  "name": "ngDrupalGap",
+  "version": "1.0.0",
+  "description": "ngDrupalGap: An Ionic project!",
+    "dependencies": {
+      "restangular": "1.4.0"
+    }
+}
