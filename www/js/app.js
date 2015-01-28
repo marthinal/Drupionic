@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.services'])
+angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.services', 'restangular'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -19,6 +19,14 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
       StatusBar.styleDefault();
     }
   });
+})
+
+// Set the Base url.
+// TODO maybe a global config object???
+.config(function(RestangularProvider) {
+
+  RestangularProvider.setBaseUrl('YOUR PATH HERE');
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
