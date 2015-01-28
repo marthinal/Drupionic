@@ -29,6 +29,6 @@ angular.module('ngDrupalGap.controllers', [])
 
 .controller('LoginCtrl', function($scope, $state, loginService) {
   $scope.login = function(user) {
-    loginService.login();
+    loginService.login(user);
   };
 });
