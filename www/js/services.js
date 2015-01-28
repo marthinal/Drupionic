@@ -97,10 +97,18 @@ angular.module('ngDrupalGap.services', [])
 })
 
 // Login Service for ngDrupalGap.
-.factory('loginService', function($http) {
+.factory('loginService', function($http, Restangular) {
   return {
-    login:function() {
-      alert('Service');
+    login:function(user) {
+
+      data_encoded = '&name=' + user.name + '&pass=' + user.pass + '&form_id=user_login_form';
+
+      var login = Restangular.one('user/login').customPOST(
+        data_encoded,
+        undefined, // put your path here
+        undefined, // params here, e.g. {format: "json"}
+        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"}
+      );
     }
   }
 });
