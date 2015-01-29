@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "ngDrupalGap: An Ionic project!",
     "dependencies": {
-      "restangular": "1.4.0"
+      "restangular": "1.4.0",
+      "ngdrupal" : "1.0.0"
     }
 }
