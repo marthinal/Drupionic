@@ -26,9 +26,17 @@ angular.module('ngDrupalGap.controllers', [])
     enableFriends: true
   };
 })
-
+  // LOGIN Controller.
 .controller('LoginCtrl', function($scope, $state, loginService) {
   $scope.login = function(user) {
-    loginService.login(user);
+    var login = loginService.login(user)
+      // Go to "My account"
+      .then(function(data) {
+        $state.go('tab.account');
+      })
+      // WRONG Credentials. TODO remove the alert. Added for test reasons.
+      .catch(function(response) {
+        alert('Fail!');
+      });
   };
 });
