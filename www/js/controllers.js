@@ -43,4 +43,21 @@ angular.module('ngDrupalGap.controllers', [])
       });
     });
   };
+})
+
+// LogOut Controller.
+.controller('LogoutCtrl', function($scope, $state, $ionicPopup, logoutService) {
+  $scope.logout = function() {
+    logoutService.logout()
+      // Go to "Login tab".
+      .then(function(data) {
+          $state.go('login');
+      })
+      .catch(function() {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Logout',
+          template: 'Oops Cannot logout!'
+        });
+      });
+  };
 });
