@@ -36,28 +36,28 @@ angular.module('ngDrupalGap.controllers', [])
         $state.go('tab.account');
       })
       .catch(function() {
-        var alertPopup = $ionicPopup.alert({
+        $ionicPopup.alert({
           title: 'Login',
           // TODO i18n.
           template: 'Sorry, unrecognized username or password.'
-      });
+        });
     });
   };
 })
 
-// LogOut Controller.
+// LOGOUT Controller.
 .controller('LogoutCtrl', function($scope, $state, $ionicPopup, logoutService) {
   $scope.logout = function() {
     logoutService.logout()
       // Go to "Login tab".
-      .then(function(data) {
-          $state.go('login');
+      .then(function() {
+        $state.go('login');
       })
       .catch(function() {
-        var alertPopup = $ionicPopup.alert({
+        $ionicPopup.alert({
           title: 'Logout',
           template: 'Oops Cannot logout!'
         });
       });
-  };
+  }
 });
