@@ -12,7 +12,10 @@
       </div>
       <div class="padding">
         <button class="button button-block button-positive" ng-click="login(user)" ng-disabled="!user.name || !user.pass">
-          Sign-In
+          Log-In
+        </button>
+        <button class="button button-block button-positive" ng-controller="RegisterCtrl" ng-click="openModal()">
+          Register
         </button>
       </div>
   </ion-content>
