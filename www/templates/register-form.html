@@ -3,15 +3,15 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Email</span>
-          <input type="email" ng-model="register.email">
+          <input type="email" ng-model="user.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Username</span>
-          <input type="text" ng-model="register.name">
+          <input type="text" ng-model="user.name">
         </label>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="" ng-disabled="!register.name || !register.email">
+        <button class="button button-block button-positive" ng-controller="RegisterDataCtrl" ng-click="register(user)" ng-disabled="!user.name || !user.email">
           Next
         </button>
 

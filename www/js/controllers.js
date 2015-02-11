@@ -28,7 +28,7 @@ angular.module('ngDrupalGap.controllers', [])
 })
 
 // LOGIN Controller.
-.controller('LoginCtrl', function($scope, $state, $ionicPopup,loginService) {
+.controller('LoginCtrl', function($scope, $state, $ionicPopup, loginService) {
   $scope.login = function(user) {
     loginService.login(user)
       // Go to "My account".
@@ -62,8 +62,8 @@ angular.module('ngDrupalGap.controllers', [])
   }
 })
 
-// REGISTER Controller.
-.controller('RegisterCtrl', function($scope, $ionicModal) {
+// REGISTRATION FORM Controller.
+.controller('RegisterFormCtrl', function($scope, $ionicModal) {
   $ionicModal.fromTemplateUrl('templates/register-form.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -83,4 +83,27 @@ angular.module('ngDrupalGap.controllers', [])
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
+})
+
+// REGISTRATION DATAController.
+.controller('RegisterDataCtrl', function($scope, $ionicModal, $ionicPopup, registerService) {
+  $scope.register = function(user) {
+    registerService.register(user)
+      // Go to "Login tab".
+      .then(function() {
+        $ionicPopup.alert({
+          title: 'Registration',
+          //TODO Depending on the Drupal settings the message should be different...
+          template: 'Done!'
+        });
+        $scope.modal.hide();
+      });
+      // TODO Validation errors here.
+      /*.catch(function() {
+        $ionicPopup.alert({
+          title: 'Logout',
+          template: 'Oops Error on Registration!'
+        });
+      });*/
+    };
 });
