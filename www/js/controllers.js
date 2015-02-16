@@ -86,9 +86,9 @@ angular.module('ngDrupalGap.controllers', [])
 })
 
 // REGISTRATION DATAController.
-.controller('RegisterDataCtrl', function($scope, $ionicModal, $ionicPopup, AuthService) {
+.controller('RegisterDataCtrl', function($scope, $ionicModal, $ionicPopup, RegisterService) {
   $scope.register = function(user) {
-    AuthService.register(user)
+    RegisterService.register(user)
       // Go to "Login tab".
       .then(function() {
         $ionicPopup.alert({
