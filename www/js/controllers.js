@@ -28,9 +28,9 @@ angular.module('ngDrupalGap.controllers', [])
 })
 
 // LOGIN Controller.
-.controller('LoginCtrl', function($scope, $state, $ionicPopup, loginService) {
+.controller('LoginCtrl', function($scope, $state, $ionicPopup, AuthService) {
   $scope.login = function(user) {
-    loginService.login(user)
+    AuthService.login(user)
       // Go to "My account".
       .then(function(data) {
         $state.go('tab.account');
@@ -46,9 +46,9 @@ angular.module('ngDrupalGap.controllers', [])
 })
 
 // LOGOUT Controller.
-.controller('LogoutCtrl', function($scope, $state, $ionicPopup, logoutService) {
+.controller('LogoutCtrl', function($scope, $state, $ionicPopup, AuthService) {
   $scope.logout = function() {
-    logoutService.logout()
+    AuthService.logout()
       // Go to "Login tab".
       .then(function() {
         $state.go('login');
@@ -86,9 +86,9 @@ angular.module('ngDrupalGap.controllers', [])
 })
 
 // REGISTRATION DATAController.
-.controller('RegisterDataCtrl', function($scope, $ionicModal, $ionicPopup, registerService) {
+.controller('RegisterDataCtrl', function($scope, $ionicModal, $ionicPopup, AuthService) {
   $scope.register = function(user) {
-    registerService.register(user)
+    AuthService.register(user)
       // Go to "Login tab".
       .then(function() {
         $ionicPopup.alert({
