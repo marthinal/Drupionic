@@ -21,6 +21,21 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
   });
 })
 
+// Ths user needs to be authenticated to navigate through the tabs.
+// Otherwise go to the loginm page.
+.run(function ($state, $rootScope, AuthService) {
+  $rootScope.$on('$stateChangeStart', function (event, toState) {
+    if (toState.data && toState.data.requiresLogin && !AuthService.isAuthenticated()) {
+      event.preventDefault();
+      $state.go('login');
+    }
+    else if (toState.data && !toState.data.requiresLogin && AuthService.isAuthenticated()) {
+      event.preventDefault();
+      $state.go('tab.account');
+    }
+  });
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -32,7 +47,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
     .state('login', {
       url: '/login',
       templateUrl: 'templates/tab-login.html',
-      controller: 'LoginCtrl'
+      controller: 'LoginCtrl',
+      data : {requiresLogin : false }
     })
     
     // setup an abstract state for the tabs directive
@@ -54,6 +70,10 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
     }
   })
 
+  .state('logout', {
+    data : {requiresLogin : true }
+  })
+
   .state('tab.chats', {
       url: '/chats',
       views: {
@@ -71,7 +91,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
           templateUrl: 'templates/chat-detail.html',
           controller: 'ChatDetailCtrl'
         }
-      }
+      },
+      data : {requiresLogin : true }
     })
 
   .state('tab.friends', {
@@ -100,7 +121,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
         controller: 'AccountCtrl'
-      }
+      },
+      data : {requiresLogin : true }
     }
   });
 
