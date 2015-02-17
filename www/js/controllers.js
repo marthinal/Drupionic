@@ -21,7 +21,7 @@ angular.module('ngDrupalGap.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($timeout, $scope, DrupalSession) {
+.controller('AccountCtrl', function($scope, DrupalSession) {
   $scope.settings = {
     enableFriends: true
   };
