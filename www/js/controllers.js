@@ -21,10 +21,12 @@ angular.module('ngDrupalGap.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($timeout, $scope, DrupalSession) {
   $scope.settings = {
     enableFriends: true
   };
+  $scope.name = DrupalSession.user.name[0].value;
+  $scope.created = moment.unix(DrupalSession.user.created[0].value).fromNow();
 })
 
 // LOGIN Controller.

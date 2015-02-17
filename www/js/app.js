@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.services', 'ngdrupal'])
+angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.services', 'ngdrupal', 'angularMoment'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -116,6 +116,7 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
     })
 
   .state('tab.account', {
+    cache: false,
     url: '/account',
     views: {
       'tab-account': {
