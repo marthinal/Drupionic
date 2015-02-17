@@ -81,7 +81,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
         }
-      }
+      },
+      data : {requiresLogin : true }
     })
 
     .state('tab.chat-detail', {
@@ -102,7 +103,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
           templateUrl: 'templates/tab-friends.html',
           controller: 'FriendsCtrl'
         }
-      }
+      },
+      data : {requiresLogin : true }
     })
 
     .state('tab.friend-detail', {
@@ -112,7 +114,8 @@ angular.module('ngDrupalGap', ['ionic', 'ngDrupalGap.controllers', 'ngDrupalGap.
           templateUrl: 'templates/friend-detail.html',
           controller: 'FriendDetailCtrl'
         }
-      }
+      },
+      data : {requiresLogin : true }
     })
 
   .state('tab.account', {
